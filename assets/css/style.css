@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    height: 600px;
+    width: 600px;
+    display: inline;
+}
+
+.box {
+    display: inline-flex;
+    height: 34%;
+    width: 33%;
+    background-color: lightgray;
+}
+
+#top-middle, #bottom-middle {
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 5px;
+}
+
+#middle-left, #middle-right {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: 5px;
+}
+
+#middle-middle {
+    border-style: solid;
+    border-width: 5px;
+}
