@@ -4,9 +4,8 @@ body {
 }
 
 main {
-    height: 600px;
-    width: 600px;
-    display: inline;
+    height: 700px;
+    width: 700px;
 }
 
 .box {
@@ -16,19 +15,23 @@ main {
     background-color: lightgray;
 }
 
-#top-middle, #bottom-middle {
+.row-cols-3 {
+    padding: 10px;
+}
+
+#top-middle, #bottom-middle, .top-middle, .bottom-middle {
     border-left-style: solid;
     border-right-style: solid;
     border-width: 5px;
 }
 
-#middle-left, #middle-right {
+#middle-left, #middle-right, .middle-left, .middle-right{
     border-top-style: solid;
     border-bottom-style: solid;
     border-width: 5px;
 }
 
-#middle-middle {
+#middle-middle, .middle-middle {
     border-style: solid;
     border-width: 5px;
 }
