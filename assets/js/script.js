@@ -7,10 +7,10 @@ document.addEventListener("click", function() {
 });
 
 function playersTurn() {
-    if (playerOnesTurn) {
+    if (playerOnesTurn && event.target.textContent === '') {
         event.target.textContent = 'X';
         playerOnesTurn = false;
-    } else if (!playerOnesTurn) {
+    } else if (!playerOnesTurn && event.target.textContent === '') {
         event.target.textContent = 'O';
         playerOnesTurn = true;
     }
@@ -18,5 +18,5 @@ function playersTurn() {
 }
 
 function checkBingo() {
-    
+
 }

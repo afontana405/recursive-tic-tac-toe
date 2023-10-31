@@ -23,6 +23,7 @@ main {
 
 .col {
     height: 67px;
+    line-height: 67px;
 }
 
 #top-middle, #bottom-middle {
