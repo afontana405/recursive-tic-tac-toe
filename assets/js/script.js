@@ -34,14 +34,16 @@ function playersTurn() {
 }
 
 function submitTurn() {
-    nextSquare(); 
-    lastSpotPlayed = ''; // clears the variable
-    if (playerOnesTurn) {
-        playerOnesTurn = false; // makes it player 2s turn
-    } else if (!playerOnesTurn) {
-        playerOnesTurn = true; // makes it player 1s turn
+    if (lastSpotPlayed != '') {
+        nextSquare(); 
+        lastSpotPlayed = ''; // clears the variable
+        if (playerOnesTurn) {
+            playerOnesTurn = false; // makes it player 2s turn
+        } else if (!playerOnesTurn) {
+            playerOnesTurn = true; // makes it player 1s turn
+        }
+        checkBingo();
     }
-    checkBingo();
 }
 
 function nextSquare() {
