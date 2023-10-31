@@ -10,16 +10,17 @@ main {
 
 .box {
     display: inline-flex;
+    justify-content: center;
     height: 34%;
     width: 33%;
     background-color: lightgray;
 }
 
-.row-cols-3 {
-    padding: 10px;
+.container {
+    padding: 5px;
 }
 
-.col {
+.container div {
     height: 67px;
     line-height: 67px;
     font-size: 50px;
@@ -58,4 +59,8 @@ main {
 .middle-middle {
     border-style: solid;
     border-width: 5px;
+}
+
+.playable {
+    background-color: green;
 }
