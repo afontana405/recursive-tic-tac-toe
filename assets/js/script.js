@@ -1,6 +1,7 @@
 var playerOnesTurn = true;
 var lastSpotPlayed; 
 var nextPlayableLocation;
+var gameBoard = document.getElementsByClassName('box');
 
 window.addEventListener('load', gameStart);
 
@@ -14,7 +15,6 @@ document.addEventListener("click", function() {
 document.getElementById('submit-btn').addEventListener("click", submitTurn);
 
 function gameStart() {
-    var gameBoard = document.getElementsByClassName('box');
     for (var i = 0; i < gameBoard.length; i++) {
         gameBoard[i].classList.add('playable');
     }
@@ -47,6 +47,10 @@ function submitTurn() {
 function nextSquare() {
     if (nextPlayableLocation) {
         document.getElementById(nextPlayableLocation).classList.remove('playable');
+    } else {
+        for (var i = 0; i < gameBoard.length; i++) {
+            gameBoard[i].classList.remove('playable');
+        }
     }
     nextPlayableLocation = lastSpotPlayed.className;
     console.log(nextPlayableLocation);
