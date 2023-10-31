@@ -17,6 +17,12 @@ main {
 
 .row-cols-3 {
     padding: 10px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.col {
+    height: 67px;
 }
 
 #top-middle, #bottom-middle {

@@ -14,4 +14,9 @@ function playersTurn() {
         event.target.textContent = 'O';
         playerOnesTurn = true;
     }
+    checkBingo();
+}
+
+function checkBingo() {
+    
 }
