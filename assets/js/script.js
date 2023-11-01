@@ -55,7 +55,7 @@ function nextSquare() {
         }
     }
     nextPlayableLocation = lastSpotPlayed.className;
-    console.log(nextPlayableLocation);
+    // console.log(nextPlayableLocation);
     document.getElementById(nextPlayableLocation).classList.add('playable');
 }
 
