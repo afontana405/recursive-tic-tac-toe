@@ -6,6 +6,9 @@ body {
 main {
     height: 700px;
     width: 700px;
+}
+
+.box {
     background-color: lightgray;
 }
 
