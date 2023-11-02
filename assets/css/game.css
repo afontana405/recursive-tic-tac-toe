@@ -12,6 +12,7 @@ main {
 .box {
     background-color: lightgray;
 }
+
 .box, .container div {
     display: inline-flex;
     justify-content: center;
@@ -21,6 +22,10 @@ main {
 
 .container {
     padding: 20px 2px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 130px;
 }
 
 .container div {
