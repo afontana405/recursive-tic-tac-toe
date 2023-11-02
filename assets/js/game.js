@@ -2,24 +2,19 @@ var playerOnesTurn = true;
 var lastSpotPlayed; 
 var nextPlayableLocation;
 var allContainers = document.getElementsByClassName("container");
-var gameBoard = document.getElementsByClassName('box');
-window.addEventListener('load', gameStart);
+var gameBoard = document.getElementById('game-board');
+var gameBoardTiles = document.getElementsByClassName('box');
 
+// listens for players chosen location
 document.addEventListener("click", function() {
     if (event.target.tagName === 'DIV' && event.target.parentElement.parentElement.classList.contains('playable')) {
-        // console.log(event.target.parentElement);
         playersTurn();
     }
 });
 
 document.getElementById('submit-btn').addEventListener("click", submitTurn);
 
-function gameStart() {
-    for (var i = 0; i < gameBoard.length; i++) {
-        gameBoard[i].classList.add('playable');
-    }
-}
-
+// displays an X or O on players input
 function playersTurn() {
     if (lastSpotPlayed) { // makes sure player can only make one move per turn
         lastSpotPlayed.innerHTML = '';
@@ -40,24 +35,24 @@ function submitTurn() {
         lastSpotPlayed = ''; // clears the variable
         if (playerOnesTurn) {
             playerOnesTurn = false; // makes it player 2s turn
-        } else if (!playerOnesTurn) {
+        } else {
             playerOnesTurn = true; // makes it player 1s turn
         }
     }
 }
 
 function nextSquare() {
-    for (var i = 0; i < gameBoard.length; i++) {
-        gameBoard[i].classList.remove('playable');
+    for (var i = 0; i < gameBoardTiles.length; i++) {
+        gameBoardTiles[i].classList.remove('playable');
     }
     nextPlayableLocation = document.getElementById(lastSpotPlayed.className);
     let childEl = nextPlayableLocation.children[0];
     if (childEl.textContent != 'X' && childEl.textContent != 'O') {
         nextPlayableLocation.classList.add('playable');
     } else {
-        for (let i = 0; i < gameBoard.length; i++) {
+        for (let i = 0; i < gameBoardTiles.length; i++) {
             if (allContainers[i].textContent != 'X' && allContainers[i].textContent != 'O') {
-                gameBoard[i].classList.add('playable');
+                gameBoardTiles[i].classList.add('playable');
             }
         }
     }
@@ -67,7 +62,7 @@ function nextSquare() {
 function checkBingo() {
     var containerEl = lastSpotPlayed.parentElement;
     var tiles = containerEl.children;
-    var [tL, tM, tR, mL, mM, mR, bL, bM, bR] = tiles;
+    const [tL, tM, tR, mL, mM, mR, bL, bM, bR] = tiles;
     if (tL.textContent != '' && tL.textContent === tM.textContent && tL.textContent ===  tR.textContent) {
         if (playerOnesTurn) {
             containerEl.textContent = 'X'
@@ -127,6 +122,27 @@ function checkBingo() {
     }
 }
 
-function checkMegaBingo() {
+// function checkMegaBingo() {
+//     const [tL, tM, tR, mL, mM, mR, bL, bM, bR] = allContainers;
+//     if (tL.textContent != '' && tL.textContent === tM.textContent && tL.textContent ===  tR.textContent) {
+//         displayMegaBingo();
+//     } else if (mL.textContent != '' && mL.textContent === mM.textContent && mL.textContent ===  mR.textContent) {
+//         displayMegaBingo();
+//     } else if (bL.textContent != '' && bL.textContent === bM.textContent && bL.textContent ===  bR.textContent) {
+//         displayMegaBingo();
+//     } else if (tL.textContent != '' && tL.textContent === mL.textContent && tL.textContent === bL.textContent) {
+//         displayMegaBingo();
+//     } else if (tM.textContent != '' && tM.textContent === mM.textContent && tM.textContent === bM.textContent) {
+//         displayMegaBingo();
+//     } else if (tR.textContent != '' && tR.textContent === mR.textContent && tR.textContent === bR.textContent) {
+//         displayMegaBingo();
+//     } else if (tL.textContent != '' && tL.textContent === mM.textContent && tL.textContent === bR.textContent) {
+//         displayMegaBingo();
+//     } else if (tR.textContent != '' && tR.textContent === mM.textContent && tR.textContent === bL.textContent) {
+//         displayMegaBingo();
+//     }
+// }
 
-}
+// function displayMegaBingo() {
+
+// }
