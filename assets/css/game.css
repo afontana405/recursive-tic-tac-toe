@@ -6,10 +6,6 @@ body {
 main {
     height: 700px;
     width: 700px;
-}
-
-
-.box {
     background-color: lightgray;
 }
 
@@ -92,4 +88,11 @@ main {
 
 .playable {
     background-color: green;
+}
+
+#end-screen {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 500px;
 }

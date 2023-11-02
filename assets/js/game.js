@@ -130,8 +130,8 @@ function checkMegaBingo() {
 
 function displayMegaBingo() {
     if (playerOnesTurn) {
-        gameBoard.innerHTML = 'X'
+        gameBoard.innerHTML = '<section id="end-screen">X</section>';
     } else {
-        gameBoard.innerHTML = 'O'
+        gameBoard.innerHTML = '<section id="end-screen">O</section>';
     }
 }
