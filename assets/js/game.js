@@ -58,91 +58,80 @@ function nextSquare() {
     }
 }
 
-// my inefficient way to check for 3 X's or O's in a row
+// my janky way to check for 3 X's or O's in a row
 function checkBingo() {
     var containerEl = lastSpotPlayed.parentElement;
     var tiles = containerEl.children;
     const [tL, tM, tR, mL, mM, mR, bL, bM, bR] = tiles;
-    if (tL.textContent != '' && tL.textContent === tM.textContent && tL.textContent ===  tR.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    if (tL.innerHTML != '' && tL.innerHTML === tM.innerHTML && tL.innerHTML ===  tR.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (mL.textContent != '' && mL.textContent === mM.textContent && mL.textContent ===  mR.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (mL.innerHTML != '' && mL.innerHTML === mM.innerHTML && mL.innerHTML ===  mR.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (bL.textContent != '' && bL.textContent === bM.textContent && bL.textContent ===  bR.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (bL.innerHTML != '' && bL.innerHTML === bM.innerHTML && bL.innerHTML ===  bR.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (tL.textContent != '' && tL.textContent === mL.textContent && tL.textContent === bL.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (tL.innerHTML != '' && tL.innerHTML === mL.innerHTML && tL.innerHTML === bL.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (tM.textContent != '' && tM.textContent === mM.textContent && tM.textContent === bM.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (tM.innerHTML != '' && tM.innerHTML === mM.innerHTML && tM.innerHTML === bM.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (tR.textContent != '' && tR.textContent === mR.textContent && tR.textContent === bR.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (tR.innerHTML != '' && tR.innerHTML === mR.innerHTML && tR.innerHTML === bR.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (tL.textContent != '' && tL.textContent === mM.textContent && tL.textContent === bR.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (tL.innerHTML != '' && tL.innerHTML === mM.innerHTML && tL.innerHTML === bR.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
-    } else if (tR.textContent != '' && tR.textContent === mM.textContent && tR.textContent === bL.textContent) {
-        if (playerOnesTurn) {
-            containerEl.textContent = 'X'
-        } else {
-            containerEl.textContent = 'O'
-        }
+    } else if (tR.innerHTML != '' && tR.innerHTML === mM.innerHTML && tR.innerHTML === bL.innerHTML) {
+        displayBingo(containerEl);
         checkMegaBingo();
     }
 }
 
-// function checkMegaBingo() {
-//     const [tL, tM, tR, mL, mM, mR, bL, bM, bR] = allContainers;
-//     if (tL.textContent != '' && tL.textContent === tM.textContent && tL.textContent ===  tR.textContent) {
-//         displayMegaBingo();
-//     } else if (mL.textContent != '' && mL.textContent === mM.textContent && mL.textContent ===  mR.textContent) {
-//         displayMegaBingo();
-//     } else if (bL.textContent != '' && bL.textContent === bM.textContent && bL.textContent ===  bR.textContent) {
-//         displayMegaBingo();
-//     } else if (tL.textContent != '' && tL.textContent === mL.textContent && tL.textContent === bL.textContent) {
-//         displayMegaBingo();
-//     } else if (tM.textContent != '' && tM.textContent === mM.textContent && tM.textContent === bM.textContent) {
-//         displayMegaBingo();
-//     } else if (tR.textContent != '' && tR.textContent === mR.textContent && tR.textContent === bR.textContent) {
-//         displayMegaBingo();
-//     } else if (tL.textContent != '' && tL.textContent === mM.textContent && tL.textContent === bR.textContent) {
-//         displayMegaBingo();
-//     } else if (tR.textContent != '' && tR.textContent === mM.textContent && tR.textContent === bL.textContent) {
-//         displayMegaBingo();
-//     }
-// }
+function displayBingo(containerEl) {
+    if (playerOnesTurn) {
+        containerEl.textContent = 'X'
+    } else {
+        containerEl.textContent = 'O'
+    }
+}
 
-// function displayMegaBingo() {
+// my even jankier way to check for the !!! MEGA BINGO !!!
+function checkMegaBingo() {
+    const [tL, tM, tR, mL, mM, mR, bL, bM, bR] = allContainers;
+    if (mM.textContent === 'X' || tL.textContent === 'O') {
+        if (mL.textContent === mM.textContent && mL.textContent ===  mR.textContent) { // middle horizontal bingo
+            displayMegaBingo();
+        } else if (tM.textContent === mM.textContent && tM.textContent === bM.textContent) { // middle vertical bingo
+            displayMegaBingo();
+        } else if (tL.textContent === mM.textContent && tL.textContent === bR.textContent) { // diagonal bingo
+            displayMegaBingo();
+        } else if (tR.textContent === mM.textContent && tR.textContent === bL.textContent) { // diagonal bingo
+            displayMegaBingo();
+        }
+    }
+    if (tL.textContent === 'X' || tL.textContent === 'O') {
+        if (tL.textContent === tM.textContent && tL.textContent ===  tR.textContent) { // top horizontal bingo
+            displayMegaBingo();
+        } else if (tL.textContent === mL.textContent && tL.textContent === bL.textContent) { // left vertical bingo
+            displayMegaBingo();
+        } 
+    }
+    if (bR.textContent === 'X' || tL.textContent === 'O') {
+        if (bL.textContent === bM.textContent && bL.textContent ===  bR.textContent) { // bottom horizontal bingo
+            displayMegaBingo();
+        } else if (tR.textContent === mR.textContent && tR.textContent === bR.textContent) { // right vertical bingo
+            displayMegaBingo();
+        } 
+    }
+}
 
-// }
+function displayMegaBingo() {
+    if (playerOnesTurn) {
+        gameBoard.innerHTML = 'X'
+    } else {
+        gameBoard.innerHTML = 'O'
+    }
+}
